@@ -107,9 +107,9 @@ func (self *FileSystemUsage) Get(path string) error {
 		return err
 	}
 
-	self.Total = uint64(fs.Blocks) * uint64(fs.Bsize)
-	self.Free = uint64(fs.Bfree) * uint64(fs.Bsize)
-	self.Avail = uint64(fs.Bavail) * uint64(fs.Bsize)
+	self.Total = uint64(fs.Blocks) * uint64(fs.Frsize)
+	self.Free = uint64(fs.Bfree) * uint64(fs.Frsize)
+	self.Avail = uint64(fs.Bavail) * uint64(fs.Frsize)
 	self.Used = self.Total - self.Free
 	self.Files = fs.Files
 	self.FreeFiles = fs.Ffree
