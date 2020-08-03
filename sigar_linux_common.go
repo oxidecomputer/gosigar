@@ -370,27 +370,6 @@ func parseMeminfo() (map[string]uint64, error) {
 	return table, err
 }
 
-func readFile(file string, handler func(string) bool) error {
-	contents, err := ioutil.ReadFile(file)
-	if err != nil {
-		return err
-	}
-
-	reader := bufio.NewReader(bytes.NewBuffer(contents))
-
-	for {
-		line, _, err := reader.ReadLine()
-		if err == io.EOF {
-			break
-		}
-		if !handler(string(line)) {
-			break
-		}
-	}
-
-	return nil
-}
-
 func strtoull(val string) (uint64, error) {
 	return strconv.ParseUint(val, 10, 64)
 }
