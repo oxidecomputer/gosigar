@@ -15,7 +15,7 @@ func main() {
 	fslist := gosigar.FileSystemList{}
 	err := fslist.Get()
 	if err != nil {
-		fmt.Printf("Failed to get list of filesystems: %v", err)
+		fmt.Printf("Failed to get list of filesystems: %v\n", err)
 		os.Exit(-1)
 	}
 
